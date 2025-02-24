@@ -25,7 +25,7 @@ yarn add react-smooth-scrolll
 ### Basic Example
 
 ```tsx
-import SmoothScroll from "react-smooth-scrolll";
+import { SmoothScroll } from "react-smooth-scrolll";
 
 const App = () => {
     return (
@@ -52,9 +52,9 @@ You can override default settings using props:
 
 | Prop           | Type    | Default | Description |
 |---------------|--------|---------|-------------|
-| `scrollSpeed` | number | `1.5`   | Adjusts wheel scroll sensitivity |
+| `scrollSpeed` | number | `1.5`   | Adjusts wheel scroll sensitivity  |
 | `infinite`    | boolean | `false` | Enables infinite scroll looping |
-| `smoothness`  | number | `0.07`  | Controls smooth scrolling effect |
+| `smoothness`  | number | `0.07`  | Linear interpolation (smoothness) intensity (between 0 and 1) |
 | `options`     | object  | `{}`    | Additional Lenis options |
 
 ## API
