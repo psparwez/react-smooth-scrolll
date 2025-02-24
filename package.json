@@ -1,0 +1,72 @@
+{
+  "name": "react-smooth-scrolll",
+  "version": "0.1.0",
+  "description": "A lightweight React component for smooth scrolling using Lenis, compatible with React & Next.js.",
+  "author": "psparwez",
+  "license": "MIT",
+  "homepage": "https://github.com/psparwez/react-smooth-scrolll#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psparwez/react-smooth-scrolll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/psparwez/react-smooth-scrolll/issues"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "tsc --watch",
+    "prepare": "npm run build",
+    "test": "vitest --config vitest.config.ts",
+    "test:watch": "vitest --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "lenis": "^1.1.20"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^19.0.10",
+    "eslint": "^8.53.0",
+    "jsdom": "^26.0.0",
+    "react": "^19.0.0",
+    "rollup": "^4.34.8",
+    "typescript": "^5.7.3",
+    "vitest": "^1.6.1"
+  },
+  "keywords": [
+    "react",
+    "smooth-scroll",
+    "lenis",
+    "scroll-animation",
+    "nextjs",
+    "frontend",
+    "typescript",
+    "ui"
+  ],
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  }
+}
