@@ -28,7 +28,7 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({
         if (lenisRef.current) return; // Prevent re-initialization
 
         const lenis = new Lenis({
-            smooth: true,
+            smoothWheel: true,
             lerp: smoothness,
             wheelMultiplier: scrollSpeed,
             infinite: infinite,
