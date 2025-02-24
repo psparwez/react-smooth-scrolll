@@ -1,6 +1,6 @@
 {
   "name": "react-smooth-scrolll",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A lightweight React component for smooth scrolling using Lenis, compatible with React & Next.js.",
   "author": "psparwez",
   "license": "MIT",
