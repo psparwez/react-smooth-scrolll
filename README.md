@@ -22,7 +22,12 @@ yarn add react-smooth-scrolll
 
 ## Usage
 
-### Basic Example
+### **Basic Example**
+
+<p>
+  <img src="https://skillicons.dev/icons?i=react" alt="Next.js icon" width="24" height="24" style="vertical-align: middle; margin-right: 8px;">
+ <strong >In React</strong>
+</p>
 
 ```tsx
 import { SmoothScroll } from "react-smooth-scrolll";
@@ -38,6 +43,38 @@ const App = () => {
 };
 
 export default App;
+```
+<p>
+  <img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js icon" width="24" height="24" style="vertical-align: middle; margin-right: 8px;">
+ <strong > Best Practice in Next.js</strong>
+</p>
+
+1. Create a folder `utils/ScrollSmooth.tsx` or `providers/SmoothScroll.tsx`.
+2. Inside this file, paste the following code:
+
+```tsx
+"use client";
+import { SmoothScroll } from "react-smooth-scrolll";
+
+const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
+    return <SmoothScroll>{children}</SmoothScroll>;
+};
+
+export default SmoothScrollProvider;
+```
+
+3. Then, go to `app/page.tsx` and wrap your content:
+
+```tsx
+import SmoothScrollProvider from "@/providers/SmoothScroll";
+
+export default function Home() {
+  return (
+    <SmoothScrollProvider>
+      <h1>Home Page!</h1>
+    </SmoothScrollProvider>
+  );
+}
 ```
 
 ### Customizing Scroll Behavior
