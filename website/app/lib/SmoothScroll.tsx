@@ -21,9 +21,6 @@ const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
             scrollSpeed={scrollSpeed}
             smoothness={smoothness}
             infinite={infinite}
-            options={{
-                easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-            }}
         >
             {children}
         </SmoothScroll>
