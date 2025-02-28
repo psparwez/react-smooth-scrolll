@@ -5,6 +5,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import SmoothScrollProvider from "./lib/SmoothScroll";
+import { SettingsProvider } from "./context/SettingContext";
 
 // Importing Google Font
 const bricolageGrotesque = Bricolage_Grotesque({
@@ -25,26 +26,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SmoothScrollProvider>
-      <html lang="en">
-        <body
-          className={`${bricolageGrotesque.variable} antialiased`}
-        >
+    <SettingsProvider>
+      <SmoothScrollProvider>
+        <html lang="en">
+          <body
+            className={`${bricolageGrotesque.variable} antialiased`}
+          >
 
-          <header className="border-b border-dashed border-zinc-400">
-            <div className="py-6  container flex justify-between items-center border-x border-zinc-400">
-            </div>
-          </header>
+            <header className="border-b border-dashed border-zinc-400">
+              <div className="py-6  container flex justify-between items-center border-x border-zinc-400">
+              </div>
+            </header>
 
-          <main className="w-full min-h-screen px-5 md:px-10 py-10 container border-x border-dashed border-zinc-400">
-            {children}
+            <main className="w-full min-h-screen px-5 md:px-10 py-10 container border-x border-dashed border-zinc-400">
+              {children}
 
-            <div className="fixed left-0 bottom-0 top-auto pointer-events-none h-56 w-56 rounded-full bg-yellow-500/50 blur-[150px] " />
-          </main>
-          <Footer />
-        </body>
+              <div className="fixed left-0 bottom-0 top-auto pointer-events-none h-56 w-56 rounded-full bg-yellow-500/50 blur-[150px] " />
+            </main>
+            <Footer />
+          </body>
 
-      </html>
-    </SmoothScrollProvider>
+        </html>
+      </SmoothScrollProvider>
+    </SettingsProvider>
   );
 }

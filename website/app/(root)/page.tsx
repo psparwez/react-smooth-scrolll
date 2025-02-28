@@ -4,6 +4,7 @@ import CustomizingBehaviour from "./_components/CustomizingBehaviour/Customizing
 import { Hero } from "./_components/Hero/Hero";
 import { Installation } from "./_components/Installation/Installation";
 import { Usage } from "./Usages/Usages";
+import SettingsCustomize from "@/components/SettingsCustomize";
 
 export default function Home() {
     return (
@@ -14,6 +15,8 @@ export default function Home() {
             <CustomizingBehaviour />
             <AvailableProps />
             <FeatureRequest />
+
+            <SettingsCustomize />
 
 
         </>
