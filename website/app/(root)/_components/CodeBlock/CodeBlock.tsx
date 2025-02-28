@@ -120,9 +120,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                     >
                         <div className={`${className} ${styles.root}`} ref={ref}>
                             {tokens.map((line, i) => (
-                                <div key={i} {...getLineProps({ line, key: i })}>
+                                <div key={i} {...getLineProps({ line })}>
                                     {line.map((token, key) => (
-                                        <span key={key} {...getTokenProps({ token, key })} />
+                                        <span key={key} {...getTokenProps({ token })} />
                                     ))}
                                 </div>
                             ))}
