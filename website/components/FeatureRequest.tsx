@@ -1,19 +1,59 @@
-"use client"
+"use client";
 import { useState } from "react";
-
 
 export default function FeatureRequest() {
     const [feature, setFeature] = useState("");
     const [description, setDescription] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState("");
+    const [fieldErrors, setFieldErrors] = useState({ feature: "", description: "" });
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const validate = () => {
+        let valid = true;
+        const errors = { feature: "", description: "" };
+
+        if (feature.trim().length < 3) {
+            errors.feature = "Feature title must be at least 3 characters.";
+            valid = false;
+        }
+        if (description.trim().length < 10) {
+            errors.description = "Description must be at least 10 characters.";
+            valid = false;
+        }
+
+        setFieldErrors(errors);
+        return valid;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSubmitted(true);
-        // TODO: API CALL
-        setTimeout(() => {
-            setSubmitted(false);
-        }, 2000);
+        setError("");
+        if (!validate()) return;
+
+        setIsLoading(true);
+        try {
+            const res = await fetch("/api/feature-request", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ feature, description }),
+            });
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.message || "Unknown error");
+
+            setSubmitted(true);
+            setFeature("");
+            setDescription("");
+            setFieldErrors({ feature: "", description: "" });
+
+            setTimeout(() => setSubmitted(false), 3000);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (err: any) {
+            setError(err.message || "Failed to submit feature request.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -37,6 +77,7 @@ export default function FeatureRequest() {
                                 onChange={(e) => setFeature(e.target.value)}
                                 required
                             />
+                            {fieldErrors.feature && <p className="text-sm text-red-500 mt-1">{fieldErrors.feature}</p>}
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Description</label>
@@ -47,12 +88,15 @@ export default function FeatureRequest() {
                                 onChange={(e) => setDescription(e.target.value)}
                                 required
                             ></textarea>
+                            {fieldErrors.description && <p className="text-sm text-red-500 mt-1">{fieldErrors.description}</p>}
                         </div>
+                        {error && <p className="text-sm text-red-500">{error}</p>}
                         <button
                             type="submit"
-                            className="w-full px-4 py-2 text-sm  text-white bg-gradient-to-r from-zinc-800 to-zinc-700 rounded-md focus:outline-none inline-block max-w-max cursor-pointer"
+                            disabled={isLoading}
+                            className="w-full px-4 py-2 text-sm text-white bg-gradient-to-r from-zinc-800 to-zinc-700 rounded-md focus:outline-none cursor-pointer disabled:bg-zinc-700"
                         >
-                            Submit
+                            {isLoading ? "Submitting..." : "Submit Request"}
                         </button>
                     </form>
                 )}
