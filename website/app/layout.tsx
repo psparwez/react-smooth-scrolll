@@ -29,6 +29,9 @@ export default function RootLayout({
     <SettingsProvider>
       <SmoothScrollProvider>
         <html lang="en">
+          <head>
+
+          </head>
           <body
             className={`${bricolageGrotesque.variable} antialiased`}
           >
